@@ -2,6 +2,7 @@
 
 require_once './env.php';
 ini_set('display_errors', true);
+
 function connect() {
   $host = DB_HOST;
   $db   = DB_NAME;

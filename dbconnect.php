@@ -1,7 +1,6 @@
 <?php 
 
 require_once 'env.php';
-ini_set('display_errors', true);
 
 function connect() {
   $host = DB_HOST;
@@ -19,7 +18,6 @@ function connect() {
     return $pdo;
   } catch (PDOExeption $e){
     echo '接続失敗です', $e->getMessage();
-    
     exit();
   }
 }

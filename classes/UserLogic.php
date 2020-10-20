@@ -1,5 +1,4 @@
 <?php
-
 require_once '../dbconnect.php';
 
 class UserLogic
@@ -12,8 +11,9 @@ class UserLogic
   public static function createUser($userData)
   {
     $result = false;
-    $sql = 'INSERT INTO users (name, email, password)VALUES(?, ?, ?)';
-
+    $sql = 'INSERT INTO users (name, email, password)
+            VALUES (?,?,?)';
+            
     //ユーザテータを配列に入れる
     $arr = [];
     $arr[] = $userData['username'];
@@ -23,10 +23,12 @@ class UserLogic
     try{
       $stmt = connect()->prepare($sql);
       $result = $stmt->execute($arr);
+      return $result;
     } catch (\Exception $e){
       return $result;
+
     }
-    return $result;
+
   }
 
 }

@@ -2,7 +2,7 @@
 session_start();
 $err = $_SESSION;
 //セッションを消す
-$eer = array();
+$_SESSION = array();
 session_destroy();
 ?>
 <!DOCTYPE html>
@@ -14,8 +14,12 @@ session_destroy();
 </head>
 <body>
   <h2>ログインフォーム</h2>
+
+      <?php if(isset($err['msg'])) : ?>
+          <p><?php echo $err['msg']; ?></p>
+      <?php endif; ?>
+
   <form action="top.php" method="POST">
-    
     <p>
       <label for="email">メールアドレス:</label>
       <input type="text" name="email">
@@ -29,7 +33,7 @@ session_destroy();
       <label for="password">パスワード:</label>
       <input type="text" name="password">
 
-      <?php if(isset($err['email'])) : ?>
+      <?php if(isset($err['password'])) : ?>
           <p><?php echo $err['password'];?></p>
       <?php endif; ?>
 
